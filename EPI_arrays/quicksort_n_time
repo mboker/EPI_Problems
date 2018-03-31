@@ -1,0 +1,22 @@
+
+#Run quicksort in O(n) time and O(1) space, with one pass through array
+def quicksort(x, pivot_index):
+    smaller, equal, larger = 0, 0, len(x)
+    pivot_value = x[pivot_index]
+
+    while equal < larger:
+        if x[equal] < pivot_value:
+            x[smaller], x[equal] = x[equal], x[smaller]
+            smaller += 1
+            equal += 1
+        elif x[equal] == pivot_value:
+            equal += 1
+        else:
+            larger -= 1
+            x[larger], x[equal] = x[equal], x[larger]
+    return x
+
+
+if __name__ == '__main__':
+    a = [2, 4, 1, 5, 2, 6, 4, 7, 5, 6, 4, 9, 7, 2, 1, 4]
+    print(quicksort(a, pivot_index=7))
